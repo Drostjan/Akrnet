@@ -57,7 +57,6 @@ pub fn main() {
             3=>{
                 if ini && !pre2 {
                     players[1].prepareTab();
-                    //promptEnterKey();
                     pre2 = true;
                 } else if pre2 {
                     println!("\n  Ya has preparado el tablero");
@@ -88,7 +87,6 @@ pub fn main() {
                         }
                         turn += 1;
                     }
-                    //promptEnterKey();
 
                     ini = false;
                     pre1 = false;
@@ -132,6 +130,5 @@ pub fn setOpt() -> u64{
 
     return opt;
 }
-
 
 }

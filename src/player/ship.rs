@@ -51,7 +51,6 @@ impl Ship {
             }
             i += 1;
         }
-
         self.status = under;
     }
 
@@ -66,7 +65,6 @@ impl Ship {
             }
             i += 1;
         }
-
         return touch;
     }
 
@@ -75,5 +73,4 @@ impl Ship {
             print!("{}, {}", self.ship[i][0], self.ship[i][1]);
         }
     }
-   
 }

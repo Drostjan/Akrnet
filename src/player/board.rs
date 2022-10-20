@@ -145,9 +145,6 @@ impl Board {
         }else{
             cabe = false;
         }
-
         return cabe;
     }
-
-    
 }

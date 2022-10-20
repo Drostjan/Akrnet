@@ -119,25 +119,21 @@ impl Player {
         let mut option = String::new();
         io::stdin().read_line(&mut option).ok().expect("Error al leer de teclado");
         let opt: u64 = u32::from_str(&option.trim()).unwrap() as u64;
-
         return opt;
     }
 
     pub fn play(&self,player: Player){
         let mut exit = false;
-
         while !exit {
             match self.setPlay() {
                 1=>{
                     println!("");
                     self.getTab().drawTab();
-                    //promptEnterKey();
                     break;
                 },
                 2=>{
                     println!("");
                     self.getTabA().drawTab();
-                    //promptEnterKey();
                     break;
                 },
                 3=>{
@@ -166,7 +162,6 @@ impl Player {
         let mut input2 = String::new();
         io::stdin().read_line(&mut input2).ok().expect("Error al leer de teclado");
         let c: u64 = (u32::from_str(&input2.trim()).unwrap() - 1) as u64;
-
         let cas = [r as usize, c as usize];
 
         match player.getTab().getCas(cas) {
@@ -196,14 +191,11 @@ impl Player {
                 println!("\n  ¡Que pena! Ya habías tirado ahí");
             }
         }
-        //promptEnterKey();
-
     }
 
     pub fn underShips(&self) -> bool{
         let mut win = false;
         let mut i = 0;
-
         while win && i < self.ships.len() {
             if self.ships[i].isUnder() {
                 win = true;
