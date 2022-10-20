@@ -1,1 +1,0 @@
-/home/drostjan/Src/Akrnet/target/debug/arknet: /home/drostjan/Src/Akrnet/src/main.rs /home/drostjan/Src/Akrnet/src/player/board.rs /home/drostjan/Src/Akrnet/src/player/ship.rs /home/drostjan/Src/Akrnet/src/player.rs
