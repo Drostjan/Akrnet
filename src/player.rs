@@ -50,8 +50,8 @@ impl Player {
         return self.tab_a.clone();
     }
 
-    pub fn set_tab_a(&mut self,tabA: Board) {
-        self.tab_a = tabA;
+    pub fn set_tab_a(&mut self,tab_a: Board) {
+        self.tab_a = tab_a;
     }
 
     pub fn get_ships(&self) -> Vec<Ship> {
@@ -115,25 +115,23 @@ impl Player {
     }
 
     pub fn play(&self,player: Player){
-        let mut exit = false;
-        while exit == true {
+        loop {
             match self.set_play() {
-                1=>{
+                1 => {
                     println!("");
                     self.get_tab().draw_tab();
                     break;
                 },
-                2=>{
+                2 => {
                     println!("");
                     self.get_tab_a().draw_tab();
                     break;
                 },
-                3=>{
+                3 => {
                     self.atack_ships(player);
-                    exit = true;
                     break;
-                }
-                _=>{
+                },
+                _ => {
                     println!("  Opcion no valida");
                     break;
                 }
@@ -170,11 +168,11 @@ impl Player {
                 println!("");
                 self.get_tab_a().draw_tab();
                 let mut i = 0;
-                while player.get_ships()[i].isTouch(cas){
+                while player.get_ships()[i].is_touch(cas){
                     i += 1;
                 }
                 println!("\n  TOCADO!!");
-                player.get_ships()[i].setUnder();
+                player.get_ships()[i].set_under();
                 if player.get_ships()[i].is_under() {
                     println!("\n    BARCO HUNDIDO!!");
                 }

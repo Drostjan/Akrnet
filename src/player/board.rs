@@ -8,9 +8,9 @@ pub struct Board {
 }
 
 impl Board {
-    pub fn new(lenTab: usize) -> Board {
+    pub fn new(len_tab: usize) -> Board {
         Board {
-            tab: vec![vec![' ';lenTab];lenTab],
+            tab: vec![vec![' ';len_tab];len_tab],
         }
     }
 

@@ -5,9 +5,9 @@ pub struct Ship {
 } 
 
 impl Ship {
-    pub fn new(lenShip:usize) -> Ship {
+    pub fn new(len_ship:usize) -> Ship {
         Ship {
-            ship: vec![vec![0;3];lenShip],
+            ship: vec![vec![0;3];len_ship],
             status: false
         }
     }
@@ -36,7 +36,7 @@ impl Ship {
         return self.status
     }
 
-    pub fn setUnder(&mut self){
+    pub fn set_under(&mut self){
         let mut i = 0;
         let mut under = true;
 
@@ -49,7 +49,7 @@ impl Ship {
         self.status = under;
     }
 
-    pub fn isTouch(&mut self,cas:[usize;2]) -> bool{
+    pub fn is_touch(&mut self,cas:[usize;2]) -> bool{
         let mut touch = false;
         let mut i = 0;
 
@@ -61,11 +61,5 @@ impl Ship {
             i += 1;
         }
         return touch;
-    }
-
-    pub fn printShip(&self){
-        for i in 0..self.ship.len(){
-            print!("{}, {}", self.ship[i][0], self.ship[i][1]);
-        }
     }
 }
