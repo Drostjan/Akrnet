@@ -1,5 +1,3 @@
-#![allow(non_snake_case)]
-#![allow(unused_assignments)]
 pub mod ship;
 pub mod board;
 
@@ -13,16 +11,16 @@ use std::str::FromStr;
 pub struct Player {
     name: String,
     tab: Board,
-    tabA: Board,
+    tab_a: Board,
     ships: Vec<Ship>,
 }
 
 impl Player {
-    pub fn start(name: &str,tab:Board,tabA: Board,ships: Vec<Ship>) -> Player {
+    pub fn start(name: &str,tab:Board,tab_a: Board,ships: Vec<Ship>) -> Player {
         Player {
             name: name.to_owned(),
             tab: tab,
-            tabA: tabA,
+            tab_a: tab_a,
             ships: ships,
         }
     }
@@ -31,7 +29,7 @@ impl Player {
         Player {
             name: String::new(),
             tab: Board::new(0),
-            tabA: Board::new(0),
+            tab_a: Board::new(0),
             ships: Vec::new(),
         }
     }
@@ -48,26 +46,26 @@ impl Player {
         self.tab = tab;
     }
 
-    pub fn getTabA(&self) -> Board {
-        return self.tabA.clone();
+    pub fn get_tab_a(&self) -> Board {
+        return self.tab_a.clone();
     }
 
-    pub fn setTabA(&mut self,tabA: Board) {
-        self.tabA = tabA;
+    pub fn set_tab_a(&mut self,tabA: Board) {
+        self.tab_a = tabA;
     }
 
-    pub fn getShips(&self) -> Vec<Ship> {
+    pub fn get_ships(&self) -> Vec<Ship> {
         return self.ships.clone();
     }
 
-    pub fn setShips(&mut self,lenShips: usize) {
-        for i in 0..lenShips -2 {
-            let ship = Ship::new(lenShips - 1 - i);
+    pub fn set_ships(&mut self,len_ships: usize) {
+        for i in 0..len_ships -2 {
+            let ship = Ship::new(len_ships - 1 - i);
             self.ships.push(ship);
         }
     }
 
-    pub fn prepareTab(&mut self){
+    pub fn prepare_tab(&mut self){
         print!("Introduce tu nombre: \n");
         let mut name = String::new();
         io::stdin().read_line(&mut name).ok().expect("Error al leer de teclado");
@@ -100,7 +98,7 @@ impl Player {
 
     }
 
-    pub fn setPlay(&self) -> u64 {
+    pub fn set_play(&self) -> u64 {
         println!("\n Turno de: {}",self.get_name());
         println!("  ####################################");
         println!("  #           M  E  N  Ú             #");
@@ -118,8 +116,8 @@ impl Player {
 
     pub fn play(&self,player: Player){
         let mut exit = false;
-        while !exit {
-            match self.setPlay() {
+        while exit == true {
+            match self.set_play() {
                 1=>{
                     println!("");
                     self.get_tab().draw_tab();
@@ -127,11 +125,11 @@ impl Player {
                 },
                 2=>{
                     println!("");
-                    self.getTabA().draw_tab();
+                    self.get_tab_a().draw_tab();
                     break;
                 },
                 3=>{
-                    self.atackShips(player);
+                    self.atack_ships(player);
                     exit = true;
                     break;
                 }
@@ -143,9 +141,9 @@ impl Player {
         }
     }
 
-    pub fn atackShips(&self, player: Player){
+    pub fn atack_ships(&self, player: Player){
         println!("");
-        self.getTabA().draw_tab();
+        self.get_tab_a().draw_tab();
 
         print!("Introduce la fila donde quieres atacar: \n");
         let mut input = String::new();
@@ -160,24 +158,24 @@ impl Player {
 
         match player.get_tab().get_cas(cas) {
             ' '=>{
-                self.getTabA().set_cas(cas,'*');
+                self.get_tab_a().set_cas(cas,'*');
                 player.get_tab().set_cas(cas,'*');
                 println!("");
-                self.getTabA().draw_tab();
+                self.get_tab_a().draw_tab();
                 println!("\n  AGUA!!");
             }
             '@'=>{
-                self.getTabA().set_cas(cas, 'X');
+                self.get_tab_a().set_cas(cas, 'X');
                 player.get_tab().set_cas(cas, 'X');
                 println!("");
-                self.getTabA().draw_tab();
+                self.get_tab_a().draw_tab();
                 let mut i = 0;
-                while player.getShips()[i].isTouch(cas){
+                while player.get_ships()[i].isTouch(cas){
                     i += 1;
                 }
                 println!("\n  TOCADO!!");
-                player.getShips()[i].setUnder();
-                if player.getShips()[i].is_under() {
+                player.get_ships()[i].setUnder();
+                if player.get_ships()[i].is_under() {
                     println!("\n    BARCO HUNDIDO!!");
                 }
             }
@@ -187,7 +185,7 @@ impl Player {
         }
     }
 
-    pub fn underShips(&self) -> bool{
+    pub fn under_ships(&self) -> bool{
         let mut win = false;
         let mut i = 0;
         while win && i < self.ships.len() {

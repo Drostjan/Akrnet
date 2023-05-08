@@ -30,13 +30,13 @@ impl Board {
         self.tab[cas[0]][cas[1]] = c;
     }
 
-    pub fn insert_ship(&mut self,lenShip:usize,cas:[usize;2],dir:&String){
+    pub fn insert_ship(&mut self,len_ship:usize,cas:[usize;2],dir:&String){
         if dir.contains("H") {
-            for i in 0..lenShip {
+            for i in 0..len_ship {
                 self.tab[cas[0]][cas[1] + i] = '@';
             }
         } else {
-            for i in 0..lenShip {
+            for i in 0..len_ship {
                 self.tab[cas[0] + i][cas[1]] = '@';
             }
         }
@@ -46,21 +46,21 @@ impl Board {
         print!("Introduce el tamaño del tablero: \n");
         let mut input = String::new();
         io::stdin().read_line(&mut input).ok().expect("Error al leer de teclado");
-        let lenShip: u32 = u32::from_str(&input.trim()).unwrap();
+        let len_ship: u32 = u32::from_str(&input.trim()).unwrap();
         
-        if lenShip < 5  {
+        if len_ship < 5  {
             print!("El tablero debe ser de 5x5 como mínimo \nvuelve a introducir el tamaño: ");
         }
-        return lenShip as u64;
+        return len_ship as u64;
     }
 
-    pub fn set_pos_ship(&self,lenShip:usize) -> [usize;2]{
-        print!("Introduce la fila donde colocar el barco de tamaño {} :  \n", lenShip );
+    pub fn set_pos_ship(&self,len_ship:usize) -> [usize;2]{
+        print!("Introduce la fila donde colocar el barco de tamaño {} :  \n", len_ship );
         let mut input = String::new();
         io::stdin().read_line(&mut input).ok().expect("Error al leer de teclado");
         let row: u64 = (u32::from_str(&input.trim()).unwrap() - 1) as u64;
 
-        print!("Introduce la columna donde colocar el barco de tamaño {} :  \n", lenShip );
+        print!("Introduce la columna donde colocar el barco de tamaño {} :  \n", len_ship );
         let mut input2 = String::new();
         io::stdin().read_line(&mut input2).ok().expect("Error al leer de teclado");
         let col: u64 = (u32::from_str(&input2.trim()).unwrap() - 1) as u64;
@@ -111,13 +111,13 @@ impl Board {
         }
     }
 
-    pub fn cabe(&self,dir:String,cas:[usize;2],lenShip:usize) -> bool {
+    pub fn cabe(&self,dir:String,cas:[usize;2],len_ship:usize) -> bool {
         let mut cabe = true;
         let mut cont = 0;
         if self.tab[cas[0]][cas[1]] == ' ' {
             if dir.contains("H"){
-                if (cas[1] + lenShip) <= self.tab.len() {
-                    while cabe && cont < lenShip {
+                if (cas[1] + len_ship) <= self.tab.len() {
+                    while cabe && cont < len_ship {
                         if self.tab[cas[0]][cas[1] + cont] != ' ' {
                             cabe = false;
                         }
@@ -127,8 +127,8 @@ impl Board {
                     cabe = false;
                 }
             }else{
-                if (cas[0] + lenShip) <= self.tab.len() {
-                    while cabe && cont < lenShip {
+                if (cas[0] + len_ship) <= self.tab.len() {
+                    while cabe && cont < len_ship {
                         if self.tab[cas[0] + cont][cas[1]] != ' ' {
                             cabe = false;
                         }

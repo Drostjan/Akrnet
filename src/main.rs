@@ -25,12 +25,12 @@ pub fn main() {
                 let len_tab = tab.set_len_tab();
                 println!("");
                 players[0].set_tab(Board::new(len_tab as usize));
-                players[0].setTabA(Board::new(len_tab as usize));
-                players[0].setShips(len_tab as usize);
+                players[0].set_tab_a(Board::new(len_tab as usize));
+                players[0].set_ships(len_tab as usize);
 
                 players[1].set_tab(Board::new(len_tab as usize));
-                players[1].setTabA(Board::new(len_tab as usize));
-                players[1].setShips(len_tab as usize);
+                players[1].set_tab_a(Board::new(len_tab as usize));
+                players[1].set_ships(len_tab as usize);
 
                 ini = true;
                 pre1 = false;
@@ -39,7 +39,7 @@ pub fn main() {
             },
             2=>{
                 if ini && !pre1 {
-                    players[0].prepareTab();
+                    players[0].prepare_tab();
                     //promptEnterKey();
                     pre1 = true;
                 } else if pre1 {
@@ -51,7 +51,7 @@ pub fn main() {
             },
             3=>{
                 if ini && !pre2 {
-                    players[1].prepareTab();
+                    players[1].prepare_tab();
                     pre2 = true;
                 } else if pre2 {
                     println!("\n  Ya has preparado el tablero");
@@ -76,7 +76,7 @@ pub fn main() {
                         let d = defender.clone();
                         attacker.play(defender);
                         
-                        if d.underShips() {
+                        if d.under_ships() {
                             fin = true;
                             println!("\n{} ¡¡HA GANADO!!",attacker.get_name());
                         }
@@ -87,12 +87,12 @@ pub fn main() {
                     pre1 = false;
                     pre2 = false;
                     players[0].set_tab(Board::new(0));
-                    players[0].setTabA(Board::new(0));
-                    players[0].setShips(0);
+                    players[0].set_tab_a(Board::new(0));
+                    players[0].set_ships(0);
 
                     players[1].set_tab(Board::new(0));
-                    players[1].setTabA(Board::new(0));
-                    players[1].setShips(0);
+                    players[1].set_tab_a(Board::new(0));
+                    players[1].set_ships(0);
                 }else{
                     println!("\n  No puedes empezar sin inicializar la partida ni los tableros de cada jugador");
                 }
