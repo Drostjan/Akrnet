@@ -80,7 +80,7 @@ impl Player {
         self.name = name;
         print!("Coloca tu tablero {}:   \n",self.name.replace('\n', ""));
         
-        self.tab.drawTab();
+        self.tab.draw_tab();
         println!();
         for i in 0..self.ships.len() {
             let mut push = false;
@@ -95,7 +95,7 @@ impl Player {
                     println!(" {}", self.ships.len());
                     print!("Coloca tu tablero {}:   \n",self.name.replace('\n', ""));
                     println!("");
-                    self.tab.drawTab();
+                    self.tab.draw_tab();
                     println!("");
                 }else{
                     println!("  No cabe");
@@ -128,12 +128,12 @@ impl Player {
             match self.setPlay() {
                 1=>{
                     println!("");
-                    self.getTab().drawTab();
+                    self.getTab().draw_tab();
                     break;
                 },
                 2=>{
                     println!("");
-                    self.getTabA().drawTab();
+                    self.getTabA().draw_tab();
                     break;
                 },
                 3=>{
@@ -151,7 +151,7 @@ impl Player {
 
     pub fn atackShips(&self, player: Player){
         println!("");
-        self.getTabA().drawTab();
+        self.getTabA().draw_tab();
 
         print!("Introduce la fila donde quieres atacar: \n");
         let mut input = String::new();
@@ -169,14 +169,14 @@ impl Player {
                 self.getTabA().set_cas(cas,'*');
                 player.getTab().set_cas(cas,'*');
                 println!("");
-                self.getTabA().drawTab();
+                self.getTabA().draw_tab();
                 println!("\n  AGUA!!");
             }
             '@'=>{
                 self.getTabA().set_cas(cas, 'X');
                 player.getTab().set_cas(cas, 'X');
                 println!("");
-                self.getTabA().drawTab();
+                self.getTabA().draw_tab();
                 let mut i = 0;
                 while player.getShips()[i].isTouch(cas){
                     i += 1;

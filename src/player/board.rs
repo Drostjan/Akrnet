@@ -77,7 +77,7 @@ impl Board {
         return input;
     }
 
-    pub fn drawTab(&self){
+    pub fn draw_tab(&self){
         print!("    ");
         for i in 0..self.tab.len() {
             if i < 10{
