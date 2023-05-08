@@ -1,8 +1,3 @@
-#![allow(non_snake_case)]
-#![allow(dead_code)]
-#![allow(unused_variables)]
-
-
 #[derive(Clone)]
 pub struct Ship {
     ship: Vec<Vec<usize>>,
@@ -17,11 +12,11 @@ impl Ship {
         }
     }
 
-    pub fn getShip(&self) -> Vec<Vec<usize>>{
+    pub fn get_ship(&self) -> Vec<Vec<usize>>{
         return self.ship.clone();
     }
 
-    pub fn setShip(&mut self,cas:[usize;2],dir:String){
+    pub fn set_ship(&mut self,cas:[usize;2],dir:String){
         if dir.contains("H") {
             for i in 0..self.ship.len() {
                 self.ship[i][0] = cas[0];
@@ -37,7 +32,7 @@ impl Ship {
         }
     }
 
-    pub fn isUnder(&self) -> bool{
+    pub fn is_under(&self) -> bool{
         return self.status
     }
 

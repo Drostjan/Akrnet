@@ -85,12 +85,12 @@ impl Player {
         for i in 0..self.ships.len() {
             let mut push = false;
             while !push {
-                let cas = self.tab.setPosShip(self.ships[i].getShip().len());
+                let cas = self.tab.setPosShip(self.ships[i].get_ship().len());
                 let dir = self.tab.setDirShip();
                 let r = &dir;
-                if self.tab.cabe(r.to_owned(), cas, self.ships[i].getShip().len()) {
-                    self.tab.insertShip(self.ships[i].getShip().len(),cas,r);
-                    self.ships[i].setShip(cas,dir);
+                if self.tab.cabe(r.to_owned(), cas, self.ships[i].get_ship().len()) {
+                    self.tab.insertShip(self.ships[i].get_ship().len(),cas,r);
+                    self.ships[i].set_ship(cas,dir);
                     push = true;
                     println!(" {}", self.ships.len());
                     print!("Coloca tu tablero {}:   \n",self.name.replace('\n', ""));
@@ -183,7 +183,7 @@ impl Player {
                 }
                 println!("\n  TOCADO!!");
                 player.getShips()[i].setUnder();
-                if player.getShips()[i].isUnder() {
+                if player.getShips()[i].is_under() {
                     println!("\n    BARCO HUNDIDO!!");
                 }
             }
@@ -197,7 +197,7 @@ impl Player {
         let mut win = false;
         let mut i = 0;
         while win && i < self.ships.len() {
-            if self.ships[i].isUnder() {
+            if self.ships[i].is_under() {
                 win = true;
             }
             i += 1;

@@ -1,12 +1,7 @@
-#![allow(non_snake_case)]
-#![allow(dead_code)]
-#![allow(unused_variables)]
-
 use std::str::FromStr;
 use std::io;
 
 #[derive(Clone)] 
-
 pub struct Board {
     tab: Vec<Vec<char>>,
 }

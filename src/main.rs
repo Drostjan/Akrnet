@@ -1,8 +1,3 @@
-#![allow(non_snake_case)]
-#![allow(dead_code)]
-#![allow(unused_variables)]
-#![allow(unused_assignments)]
-
 pub mod player;
 
 use player::Player;
@@ -18,24 +13,24 @@ pub fn main() {
     players.push(p1);
     players.push(p2); 
 
-    let mut exit = false;
+    let mut exit = true;
     let mut ini = false;
     let mut pre1 = false;
     let mut pre2 = false;
 
-    while !exit {
-        match setOpt() {
+    while exit == true {
+        match set_opt() {
             1=>{
                 let tab = Board::new(0);
-                let lenTab = tab.setLenTab();
+                let len_tab = tab.setLenTab();
                 println!("");
-                players[0].setTab(Board::new(lenTab as usize));
-                players[0].setTabA(Board::new(lenTab as usize));
-                players[0].setShips(lenTab as usize);
+                players[0].setTab(Board::new(len_tab as usize));
+                players[0].setTabA(Board::new(len_tab as usize));
+                players[0].setShips(len_tab as usize);
 
-                players[1].setTab(Board::new(lenTab as usize));
-                players[1].setTabA(Board::new(lenTab as usize));
-                players[1].setShips(lenTab as usize);
+                players[1].setTab(Board::new(len_tab as usize));
+                players[1].setTabA(Board::new(len_tab as usize));
+                players[1].setShips(len_tab as usize);
 
                 ini = true;
                 pre1 = false;
@@ -103,17 +98,14 @@ pub fn main() {
                 }
                 continue;
             },
-            5=>{
-                exit = true;
-                break;
-            }
+            5=>exit = true,
             _=>{
                 println!("  Opción no válida");
             }
         }
     }
 
-pub fn setOpt() -> u64{
+pub fn set_opt() -> u64{
     println!("####################################");
     println!("#          Undir la Flota          #");
     println!("####################################");
