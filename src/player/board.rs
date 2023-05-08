@@ -21,15 +21,15 @@ impl Board {
         }     
     }
 
-    pub fn getCas(&self,cas:[usize;2]) -> char {
+    pub fn get_cas(&self,cas:[usize;2]) -> char {
         return self.tab[cas[0]][cas[1]]
     }
 
-    pub fn setCas(&mut self,cas:[usize;2],c:char){
+    pub fn set_cas(&mut self,cas:[usize;2],c:char){
         self.tab[cas[0]][cas[1]] = c;
     }
 
-    pub fn insertShip(&mut self,lenShip:usize,cas:[usize;2],dir:&String){
+    pub fn insert_ship(&mut self,lenShip:usize,cas:[usize;2],dir:&String){
         if dir.contains("H") {
             for i in 0..lenShip {
                 self.tab[cas[0]][cas[1] + i] = '@';
@@ -41,7 +41,7 @@ impl Board {
         }
     }
 
-    pub fn setLenTab(&self) -> u64 {
+    pub fn set_len_tab(&self) -> u64 {
         print!("Introduce el tamaño del tablero: \n");
         let mut input = String::new();
         io::stdin().read_line(&mut input).ok().expect("Error al leer de teclado");
@@ -53,7 +53,7 @@ impl Board {
         return lenShip as u64;
     }
 
-    pub fn setPosShip(&self,lenShip:usize) -> [usize;2]{
+    pub fn set_pos_ship(&self,lenShip:usize) -> [usize;2]{
         print!("Introduce la fila donde colocar el barco de tamaño {} :  \n", lenShip );
         let mut input = String::new();
         io::stdin().read_line(&mut input).ok().expect("Error al leer de teclado");
@@ -69,7 +69,7 @@ impl Board {
         return cas;
     }
 
-    pub fn setDirShip(&self) -> String {
+    pub fn set_dir_ship(&self) -> String {
         print!("Introduce la orientación del barco (H / V): \n");
         let mut input = String::new();
         io::stdin().read_line(&mut input).ok().expect("Error al leer de teclado");

@@ -22,7 +22,7 @@ pub fn main() {
         match set_opt() {
             1=>{
                 let tab = Board::new(0);
-                let len_tab = tab.setLenTab();
+                let len_tab = tab.set_len_tab();
                 println!("");
                 players[0].setTab(Board::new(len_tab as usize));
                 players[0].setTabA(Board::new(len_tab as usize));

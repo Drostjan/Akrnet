@@ -85,11 +85,11 @@ impl Player {
         for i in 0..self.ships.len() {
             let mut push = false;
             while !push {
-                let cas = self.tab.setPosShip(self.ships[i].get_ship().len());
-                let dir = self.tab.setDirShip();
+                let cas = self.tab.set_pos_ship(self.ships[i].get_ship().len());
+                let dir = self.tab.set_dir_ship();
                 let r = &dir;
                 if self.tab.cabe(r.to_owned(), cas, self.ships[i].get_ship().len()) {
-                    self.tab.insertShip(self.ships[i].get_ship().len(),cas,r);
+                    self.tab.insert_ship(self.ships[i].get_ship().len(),cas,r);
                     self.ships[i].set_ship(cas,dir);
                     push = true;
                     println!(" {}", self.ships.len());
@@ -164,17 +164,17 @@ impl Player {
         let c: u64 = (u32::from_str(&input2.trim()).unwrap() - 1) as u64;
         let cas = [r as usize, c as usize];
 
-        match player.getTab().getCas(cas) {
+        match player.getTab().get_cas(cas) {
             ' '=>{
-                self.getTabA().setCas(cas,'*');
-                player.getTab().setCas(cas,'*');
+                self.getTabA().set_cas(cas,'*');
+                player.getTab().set_cas(cas,'*');
                 println!("");
                 self.getTabA().drawTab();
                 println!("\n  AGUA!!");
             }
             '@'=>{
-                self.getTabA().setCas(cas, 'X');
-                player.getTab().setCas(cas, 'X');
+                self.getTabA().set_cas(cas, 'X');
+                player.getTab().set_cas(cas, 'X');
                 println!("");
                 self.getTabA().drawTab();
                 let mut i = 0;
