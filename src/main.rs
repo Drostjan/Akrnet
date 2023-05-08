@@ -24,11 +24,11 @@ pub fn main() {
                 let tab = Board::new(0);
                 let len_tab = tab.set_len_tab();
                 println!("");
-                players[0].setTab(Board::new(len_tab as usize));
+                players[0].set_tab(Board::new(len_tab as usize));
                 players[0].setTabA(Board::new(len_tab as usize));
                 players[0].setShips(len_tab as usize);
 
-                players[1].setTab(Board::new(len_tab as usize));
+                players[1].set_tab(Board::new(len_tab as usize));
                 players[1].setTabA(Board::new(len_tab as usize));
                 players[1].setShips(len_tab as usize);
 
@@ -72,13 +72,13 @@ pub fn main() {
                     while !fin {
                         attacker = players[turn%2].clone();
                         defender = players[(turn + 1)%2].clone();
-                        println!("\n  Turno de {}...",attacker.getName());
+                        println!("\n  Turno de {}...",attacker.get_name());
                         let d = defender.clone();
                         attacker.play(defender);
                         
                         if d.underShips() {
                             fin = true;
-                            println!("\n{} ¡¡HA GANADO!!",attacker.getName());
+                            println!("\n{} ¡¡HA GANADO!!",attacker.get_name());
                         }
                         turn += 1;
                     }
@@ -86,11 +86,11 @@ pub fn main() {
                     ini = false;
                     pre1 = false;
                     pre2 = false;
-                    players[0].setTab(Board::new(0));
+                    players[0].set_tab(Board::new(0));
                     players[0].setTabA(Board::new(0));
                     players[0].setShips(0);
 
-                    players[1].setTab(Board::new(0));
+                    players[1].set_tab(Board::new(0));
                     players[1].setTabA(Board::new(0));
                     players[1].setShips(0);
                 }else{

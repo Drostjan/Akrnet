@@ -1,6 +1,4 @@
 #![allow(non_snake_case)]
-#![allow(dead_code)]
-#![allow(unused_variables)]
 #![allow(unused_assignments)]
 pub mod ship;
 pub mod board;
@@ -38,19 +36,15 @@ impl Player {
         }
     }
     
-    pub fn getName(&self) -> String {
+    pub fn get_name(&self) -> String {
         return self.name.clone();
     }
 
-    pub fn setName(&mut self,name: String) {
-        self.name = name;
-    }
-
-    pub fn getTab(&self) -> Board {
+    pub fn get_tab(&self) -> Board {
         return self.tab.clone();
     }
 
-    pub fn setTab(&mut self,tab: Board) {
+    pub fn set_tab(&mut self,tab: Board) {
         self.tab = tab;
     }
 
@@ -107,7 +101,7 @@ impl Player {
     }
 
     pub fn setPlay(&self) -> u64 {
-        println!("\n Turno de: {}",self.getName());
+        println!("\n Turno de: {}",self.get_name());
         println!("  ####################################");
         println!("  #           M  E  N  Ú             #");
         println!("  ####################################");
@@ -128,7 +122,7 @@ impl Player {
             match self.setPlay() {
                 1=>{
                     println!("");
-                    self.getTab().draw_tab();
+                    self.get_tab().draw_tab();
                     break;
                 },
                 2=>{
@@ -164,17 +158,17 @@ impl Player {
         let c: u64 = (u32::from_str(&input2.trim()).unwrap() - 1) as u64;
         let cas = [r as usize, c as usize];
 
-        match player.getTab().get_cas(cas) {
+        match player.get_tab().get_cas(cas) {
             ' '=>{
                 self.getTabA().set_cas(cas,'*');
-                player.getTab().set_cas(cas,'*');
+                player.get_tab().set_cas(cas,'*');
                 println!("");
                 self.getTabA().draw_tab();
                 println!("\n  AGUA!!");
             }
             '@'=>{
                 self.getTabA().set_cas(cas, 'X');
-                player.getTab().set_cas(cas, 'X');
+                player.get_tab().set_cas(cas, 'X');
                 println!("");
                 self.getTabA().draw_tab();
                 let mut i = 0;
